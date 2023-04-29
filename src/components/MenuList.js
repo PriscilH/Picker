@@ -1,12 +1,17 @@
 import MenuListItem from './MenuListItem'
 
 const MenuList = ({difficulty, onItemClick}) => {
+
+const DIFFICULTIES = ["Low", "Medium", "High", "Insane"];
+
   return (
     <div className='list'>
-        <MenuListItem onClick={onItemClick} difficulty="Low" isSelected={difficulty === "Low"}/>
-        <MenuListItem onClick={onItemClick} difficulty="Medium" isSelected={difficulty === "Medium"}/>
-        <MenuListItem onClick={onItemClick} difficulty="High" isSelected={difficulty === "High"}/>
-        <MenuListItem onClick={onItemClick} difficulty="Insane" isSelected={difficulty === "Insane"}/>
+        {
+          DIFFICULTIES.map((diff) => (
+            <MenuListItem onClick={onItemClick} difficulty={diff} isSelected={difficulty === diff}/>
+          ))
+        }
+        
     </div>
   )
 }
