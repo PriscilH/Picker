@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import DisplayDifficulty from './components/DisplayDifficulty';
+import MenuList from './components/MenuList';
 
 function App() {
+  const [currentDifficulty, setCurrentDifficulty] = useState("");
+
+  const updateDifficulty = (difficulty) => {
+    setCurrentDifficulty(difficulty);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='title'>Select Your difficulty</h1>
+      <div className='workspace'>
+        <MenuList onItemClick={updateDifficulty}
+        difficulty={currentDifficulty}/>
+        <DisplayDifficulty difficulty={currentDifficulty}/>
+      </div>
     </div>
   );
 }
